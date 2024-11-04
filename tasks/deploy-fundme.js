@@ -20,7 +20,7 @@ task("deploy-fundme", "deploy and verify fundme contract").setAction(
       process.env.ETHERSCAN_API_KEY
     ) {
       await fundMe.deploymentTransaction().wait(5);
-      //verifyFundMe(fundMe.target, [300]);
+      await verifyFundMe(fundMe.target, [300]);
     } else {
       console.log("verification skip..");
     }
