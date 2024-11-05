@@ -9,7 +9,7 @@ task("interact-fundme", "interact with fundme contract")
     // init 2 accounts
     const [firstAccount, secondAccount] = await ethers.getSigners();
     // fund contract with first account
-    const fundTx = await fundMe.fund({ value: ethers.parseEther("0.05") });
+    const fundTx = await fundMe.fund({ value: ethers.parseEther("0.01") });
     await fundTx.wait();
     // check balance of contract
     const balanceOfContract = ethers.provider.getBalance(fundMe.target);
@@ -18,7 +18,7 @@ task("interact-fundme", "interact with fundme contract")
     // fund contract with second account
     const fundTxWithSecondAccount = await fundMe
       .connect(secondAccount)
-      .fund({ value: ethers.parseEther("0.05") });
+      .fund({ value: ethers.parseEther("0.01") });
     await fundTxWithSecondAccount.wait();
     // check balance of contract
     const balanceOfContractAfterSecondFund = ethers.provider.getBalance(
